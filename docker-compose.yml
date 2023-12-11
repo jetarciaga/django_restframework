@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    command: gunicorn store_app.wsgi:application -b 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    container_name: django_rest
