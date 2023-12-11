@@ -7,4 +7,4 @@ RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm -rf /tmp
 
 COPY . /app
 EXPOSE 8000
-CMD ["/bin/bash", "docker-entrypoint.sh"]
+CMD ["gunicorn","--bind", "0.0.0.0:8000", "store_app.wsgi:application"]
